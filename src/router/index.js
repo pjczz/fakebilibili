@@ -4,22 +4,21 @@ let Home = () => import('../views/home/Home.vue')
 let Search = () => import('../views/search/Search.vue')
 
 Vue.use(VueRouter)
-
 const routes = [
+  { path: '/', redirect: '/home' },
   {
-    path: '/',
-    redirect: '/home'
-    
+    path: '/home', component: Home, meta: {
+      title: "ViliVili",
+      name: "referrer",
+      content: "no-referrer"
+    }
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
-  },{
-    path: '/search',
-    name: 'Search',
-    component: Search
-
+    path: '/search', component: Search, meta: {
+      title: "ViliVili",
+      name: "referrer",
+      content: "no-referrer"
+    }
   }
 ]
 

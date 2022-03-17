@@ -25,8 +25,9 @@ export default {
 }
 .nav-bar .center{
   flex: 1;
+  margin: 10px;
 }
 .nav-bar .right{
-  flex: 1;
+  width: 454px;
 }
 </style>
