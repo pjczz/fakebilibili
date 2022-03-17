@@ -19,30 +19,40 @@
           <div class="home-tab-right"></div>
           <img src="~assets/img/toulanla.png" alt="" />
         </div>
-         <!-- 轮播图加推荐栏 -->
+        <!-- 轮播图加推荐栏 -->
         <div class="home-recommend">
           <div class="home-swiper">
-            
-              
-              <el-carousel trigger="click"  :interval="5000" arrow="always">
-                <el-carousel-item v-for="(item, i) in swiperList" :key="i">
-                  <div @click="jumpPath(item.title)">
-                    <img class="swiper_img" :src="item.pic" />
-                    <div class="swiper_title">{{ item.title }}</div>
-                  </div>
-                </el-carousel-item>
-              </el-carousel>
-            
+            <el-carousel trigger="click" :interval="5000" arrow="always">
+              <el-carousel-item v-for="(item, i) in swiperList" :key="i">
+                <div @click="jumpPath(item.title)">
+                  <img class="swiper_img" :src="item.pic" />
+                  <div class="swiper_title">{{ item.title }}</div>
+                </div>
+              </el-carousel-item>
+            </el-carousel>
           </div>
           <div class="home-recommend-item">
-            <div class="recommend-item" v-for="(item,i) in swiperList_r">
-              <img :src="item.pic" alt="">
-              <div>{{item.title}}</div>
-              </div>
-
-
+            <div class="recommend-item" v-for="(item, i) in swiperList_r">
+              <img :src="item.pic" alt="" />
+              <div>{{ item.title }}</div>
+            </div>
           </div>
         </div>
+        <!-- 分区 完结动画 -->
+       <partition pName="沃日你的歌"
+       :pList="animationList"
+       
+       ></partition>
+       
+       
+       
+       
+
+
+       
+       
+       
+       
       </el-main>
     </el-container>
   </div>
@@ -53,6 +63,7 @@ import navbar from "components/common/navbar/Navbar";
 import navLeft from "./childComps/navleft.vue";
 import navRight from "./childComps/navright.vue";
 import navCenter from "./childComps/navcenter.vue";
+import partition from "components/content/partition/partition"
 import axios from "axios";
 export default {
   name: "home",
@@ -61,6 +72,7 @@ export default {
     navLeft,
     navRight,
     navCenter,
+    partition,
   },
   data() {
     return {
@@ -332,12 +344,11 @@ li {
 /* main区域css */
 .el-main {
   position: absolute;
-  top: 158px;
+  top: 200px;
   left: 0;
   width: 100%;
   overflow: hidden;
   padding: 0;
-  
 }
 .home-tab {
   height: 108px;
@@ -348,7 +359,7 @@ li {
   justify-content: space-between;
   align-items: center;
   height: 108px;
-  padding:  0;
+  padding: 0;
 }
 .home-tab-left {
   width: 200px;
@@ -358,71 +369,93 @@ li {
   width: 216px;
   height: 52px;
 }
-.home-swiper{
+.home-swiper {
   width: 550px;
   height: 100%;
-
+  border: 2px solid;
+  border-radius: 25px;
+  overflow: hidden;
 }
-.el-carousel__container,.el-carousel{
+.el-carousel__container,
+.el-carousel {
   height: 100%;
 }
-.home-swiper img{
+.home-swiper img {
   width: 100%;
   height: 100%;
 }
-.swiper_title{
+.swiper_title {
   color: #fff;
   font: 16px;
   transform: translateY(-100px);
 }
-.home-recommend{
-   height: 35vh;
- width: 84vw;
- margin: 0 8vw;
- min-width: 1170px;
- display: flex;
- justify-content: space-between;
- align-items: center;
- padding: 0;
-
- 
+.home-recommend {
+  height: 35vh;
+  width: 84vw;
+  margin: 0 8vw;
+  min-width: 1170px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
 }
-.home-recommend-item{
-  
+.home-recommend-item {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
-  flex-direction:inherit;
+  flex-direction: inherit;
   justify-content: space-between;
-  
-  
-  height: 100%;
-  margin-left:15px ;
-}
-.recommend-item:nth-child(n+4){
-  align-self:flex-end;
 
+  height: 100%;
+  margin-left: 15px;
 }
-.recommend-item{
+.recommend-item:nth-child(n + 4) {
+  align-self: flex-end;
+}
+.recommend-item {
   position: relative;
   width: 32%;
   height: 45%;
   display: flex;
-  
-
-}
-.recommend-item div{
+  border: 2px solid #fff;
+  border-radius: 25px;
   overflow: hidden;
-  position:absolute;
+}
+.recommend-item div {
+  overflow: hidden;
+  position: absolute;
   left: 0;
   bottom: 10px;
   width: 100%;
   height: 20px;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
   font-size: 16px;
   color: #fff;
-  background-image: linear-gradient(0deg,rgba(0,0,0,.6),hsla(0,0%,46.7%,.1));
-  
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.6),
+    hsla(0, 0%, 46.7%, 0.1)
+  );
 }
-.recommend-item img{ width: 100%;height: 100%;}
+.recommend-item img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
