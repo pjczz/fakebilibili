@@ -304,6 +304,8 @@ li {
   height: 100%;
 }
 #app {
+  font: 12px Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+
 }
 .el-container {
   min-width: 1300px;

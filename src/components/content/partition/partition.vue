@@ -4,17 +4,17 @@
       <div class="partition-recommend-top">
         <div><img src="~assets/img/magic.png" alt="" /></div>
         <span
-          ><slot
-            ><div>{{ pName }}</div></slot
-          ></span
-        >
-      </div>
+          >
+           {{ pName }}
+          </span>
+        </div>
+      
       <div class="partition-recommend-main">
 
-<partitionItem v-for="(item,i) in pList" key="i"></partitionItem>
+<partitionItem v-for="(item,i) in pList" key="i" :pItemObj="item"></partitionItem>
 
-      </div>
-    </div>
+      </div></div>
+   
 
     <div class="partition-rank"></div>
   </div>
@@ -59,7 +59,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 35vh;
+  height: 50vh;
   padding: 0;
   flex-direction: row;
 }
@@ -67,7 +67,8 @@ export default {
   display: flex;
   width: 100%;
   flex-direction: column;
-  justify-content: flex-start;
+  
+
   height: 100%;
 }
 .partition-recommend-top {
@@ -84,6 +85,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 .partition-rank {
   height: 100%;
