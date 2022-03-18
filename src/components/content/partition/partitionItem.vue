@@ -1,9 +1,11 @@
 <template>
-  <div class="partition-item">
+  <div class="partition-item" >
+    <div @click="jumpPath(pItemObj.title)">
     <div class="main-img">
       <img :src="pItemObj.pic" alt="" />
       <div class="sanlian">
-        <i class="el-icon-video-play" style="color:#ff4d4f;"></i> {{ getPlayNumber }}
+        <i class="el-icon-video-play" style="color: #ff4d4f"></i>
+        {{ getPlayNumber }}
         <img src="~assets/img/dianzan.png" style="width: 12px" alt="" />
         {{ getLikeNumber }}
         <img src="~assets/img/bi.png" style="width: 12px" />{{ getCoinNumber }}
@@ -12,7 +14,10 @@
     </div>
     <div class="title">{{ pItemObj.title }}</div>
 
-    <div class="owner"><img src="~assets/img/bilitv.png" alt="">{{ pItemObj.owner.name }}</div>
+    <div class="owner">
+      <img src="~assets/img/bilitv.png" alt="" />{{ pItemObj.owner.name }}
+    </div>
+  </div>
   </div>
 </template>
 
@@ -57,6 +62,10 @@ export default {
       } else {
         return min + ":" + second;
       }
+    },
+    jumpPath(keyword) {
+      
+      this.$router.push(`/search?keyword=${keyword}`);
     },
   },
 };
@@ -108,7 +117,7 @@ export default {
   left: 5px;
   bottom: 0px;
 }
-.owner img{
+.owner img {
   width: 16px;
   height: auto;
   transform: translateY(5px);
@@ -123,7 +132,6 @@ export default {
     rgba(0, 0, 0, 0.6),
     hsla(0, 0%, 46.7%, 0.1)
   );
-  font-size:12px ;
-  
+  font-size: 12px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="fake-rank">
-    <div class="rank-number">{{ fakeRankOrder+1 }}</div>
-    <div class="rank-content">{{ fakerRankObj.name }}</div>
+    <div class="rank-number">{{ fakeRankOrder + 1 }}</div>
+    <div class="rank-content" @click="jumpPath(fakerRankObj.name)">{{ fakerRankObj.name }}</div>
   </div>
 </template>
 
@@ -21,6 +21,13 @@ export default {
       },
     },
   },
+  methods:{
+    
+      jumpPath(keyword) {
+        this.$router.push(`/search?keyword=${keyword}`);
+      },
+    
+  },
 };
 </script>
 
@@ -31,15 +38,15 @@ export default {
   display: flex;
   flex-direction: row;
 }
-.rank-number{
+.rank-number {
   font-size: 14px;
   width: 10%;
   color: #9fbcdf;
 }
-.rank-content{
-  margin-left:20px ;
+.rank-content {
+  margin-left: 20px;
   font-size: 14px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-overflow: ellipsis;
   overflow: hidden;
   height: 20px;

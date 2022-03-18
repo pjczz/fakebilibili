@@ -32,7 +32,7 @@
             </el-carousel>
           </div>
           <div class="home-recommend-item">
-            <div class="recommend-item" v-for="(item, i) in swiperList_r">
+            <div class="recommend-item" v-for="(item, i) in swiperList_r" :key="i" @click="jumpPath(item.title)">
               <img :src="item.pic" alt="" />
               <div>{{ item.title }}</div>
             </div>
@@ -130,15 +130,15 @@ export default {
   mounted() {
     // 事件总线 接收换一换发出的事件
     this.$bus.$on("changeList", (mdnameItem) => {
-      if (mdnameItem === "animationList") {
+      if (mdnameItem === "连载动画") {
         this.getAnimationList();
-      } else if (mdnameItem === "danceList") {
+      } else if (mdnameItem === "宅舞") {
         this.getDanceList();
-      } else if (mdnameItem === "gameList") {
+      } else if (mdnameItem === "单机游戏") {
         this.getGameList();
-      } else if (mdnameItem === "musicList") {
+      } else if (mdnameItem === "原创音乐") {
         this.getMusicList();
-      } else if (mdnameItem === "fashionList") {
+      } else if (mdnameItem === "美妆护肤") {
         this.getFashionList();
       } else {
         this.$message.error("换一换，数据更新失败");

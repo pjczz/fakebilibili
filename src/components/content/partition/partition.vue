@@ -2,17 +2,25 @@
   <div class="home-partition">
     <div class="partition-recommend">
       <div class="partition-recommend-top">
-        <div><img src="~assets/img/magic.png" alt="" /></div>
-        <span style="font-size:20px;">
-          {{ pName }}
-        </span>
+        <div>
+          <img src="~assets/img/magic.png" alt="" />
+          <span style="font-size: 20px">
+            {{ pName }}
+          </span>
+        </div>
+        <div>
+          <el-button size="small" class="elbt1"
+          @click="refreshMain"
+            >换一换 <i class="el-icon-refresh"></i
+          ></el-button>
+          <el-button size="mini" class="elbt2">更多</el-button>
+        </div>
       </div>
 
       <div class="partition-recommend-main">
-        
         <partitionItem
           v-for="(item, i) in pList"
-          key="i"
+          :key="i"
           :pItemObj="item"
         ></partitionItem>
       </div>
@@ -20,7 +28,12 @@
 
     <div class="partition-rank">
       <div class="shit">排行榜：</div>
-      <fakeRank v-for="(item,index) in rList" key="index" :fakerRankObj="item" :fakeRankOrder="index"></fakeRank>
+      <fakeRank
+        v-for="(item, index) in rList"
+        :key="index"
+        :fakerRankObj="item"
+        :fakeRankOrder="index"
+      ></fakeRank>
     </div>
   </div>
 </template>
@@ -51,11 +64,7 @@ export default {
   watch: {
     pList: "getrList",
   },
-  mounted() {
-   
-   
-   
-  },
+  mounted() {},
   updated() {},
   data() {
     return {
@@ -71,13 +80,13 @@ export default {
       for (let item of this.pList) {
         this.rList.push({ name: item.title, playnum: item.stat.view });
       }
-      console.log(this.rList);
+      
       this.rList = this.rList.sort(function (a, b) {
         return b.playnum - a.playnum;
       });
-      console.log(this.rList);
+     
     },
-  },
+  
   ranking(obj1, obj2) {
     var val1 = obj1.playnum;
     var val2 = obj2.playnum;
@@ -91,6 +100,11 @@ export default {
       return -1;
     }
   },
+  refreshMain(){
+    
+    this.$bus.$emit('changeList',this.pName)
+  },
+  },
 };
 </script>
 
@@ -101,7 +115,7 @@ export default {
   margin: 5vh 8vw;
   min-width: 1170px;
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
   height: 50vh;
   padding: 0;
@@ -122,6 +136,18 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   height: 12.5%;
+
+  justify-content: space-between;
+}
+/* 两个按钮 */
+.elbt1 {
+  color: black;
+  font-size: 14px;
+  width: 150px;
+}
+.elbt2 {
+  color: black;
+  font-size: 16px;
 }
 .partition-recommend-main {
   height: 87.5%;
@@ -134,11 +160,10 @@ export default {
   height: 100%;
   width: 25%;
 }
-.shit{
+.shit {
   font-size: 18px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 100;
   height: 10%;
-
 }
 </style>
