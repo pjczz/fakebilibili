@@ -3,25 +3,31 @@
     <div class="partition-recommend">
       <div class="partition-recommend-top">
         <div><img src="~assets/img/magic.png" alt="" /></div>
-        <span
-          >
-           {{ pName }}
-          </span>
-        </div>
-      
+        <span style="font-size:20px;">
+          {{ pName }}
+        </span>
+      </div>
+
       <div class="partition-recommend-main">
+        
+        <partitionItem
+          v-for="(item, i) in pList"
+          key="i"
+          :pItemObj="item"
+        ></partitionItem>
+      </div>
+    </div>
 
-<partitionItem v-for="(item,i) in pList" key="i" :pItemObj="item"></partitionItem>
-
-      </div></div>
-   
-
-    <div class="partition-rank"></div>
+    <div class="partition-rank">
+      <div class="shit">排行榜：</div>
+      <fakeRank v-for="(item,index) in rList" key="index" :fakerRankObj="item" :fakeRankOrder="index"></fakeRank>
+    </div>
   </div>
 </template>
 
 <script>
-import partitionItem from "./partitionItem.vue"
+import partitionItem from "./partitionItem.vue";
+import fakeRank from "./fakeRank.vue";
 export default {
   name: "partition",
   props: {
@@ -37,15 +43,53 @@ export default {
         return [];
       },
     },
-    rList: {
-      type: Array,
-      default() {
-        return [];
+  },
+  components: {
+    partitionItem,
+    fakeRank,
+  },
+  watch: {
+    pList: "getrList",
+  },
+  mounted() {
+   
+   
+   
+  },
+  updated() {},
+  data() {
+    return {
+      rList: [],
+      rListObj: {
+        name: "",
+        playnum: 0,
       },
+    };
+  },
+  methods: {
+    getrList() {
+      for (let item of this.pList) {
+        this.rList.push({ name: item.title, playnum: item.stat.view });
+      }
+      console.log(this.rList);
+      this.rList = this.rList.sort(function (a, b) {
+        return b.playnum - a.playnum;
+      });
+      console.log(this.rList);
     },
   },
-  components:{
-    partitionItem,
+  ranking(obj1, obj2) {
+    var val1 = obj1.playnum;
+    var val2 = obj2.playnum;
+    if (val1 < val2) {
+      return 1;
+    }
+    if (val1 == val2) {
+      return 0;
+    }
+    if (val1 > val2) {
+      return -1;
+    }
   },
 };
 </script>
@@ -54,7 +98,7 @@ export default {
 .home-partition {
   position: relative;
   width: 84vw;
-  margin: 0 8vw;
+  margin: 5vh 8vw;
   min-width: 1170px;
   display: flex;
   justify-content: space-between;
@@ -67,7 +111,6 @@ export default {
   display: flex;
   width: 100%;
   flex-direction: column;
-  
 
   height: 100%;
 }
@@ -90,5 +133,12 @@ export default {
 .partition-rank {
   height: 100%;
   width: 25%;
+}
+.shit{
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 100;
+  height: 10%;
+
 }
 </style>

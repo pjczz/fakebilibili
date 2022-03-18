@@ -39,20 +39,12 @@
           </div>
         </div>
         <!-- 分区 完结动画 -->
-       <partition pName="沃日你的歌"
-       :pList="animationList"
-       
-       ></partition>
-       
-       
-       
-       
-
-
-       
-       
-       
-       
+        <partition pName="连载动画" :pList="animationList"></partition>
+        <partition pName="宅舞" :pList="danceList"></partition>
+        <partition pName="单机游戏" :pList="gameList"></partition>
+        <partition pName="原创音乐" :pList="musicList"></partition>
+        <partition pName="美妆护肤" :pList="fashionList"></partition>
+        <div class="home-bottom"><img src="~assets/img/footer.png" alt=""></div>
       </el-main>
     </el-container>
   </div>
@@ -63,7 +55,7 @@ import navbar from "components/common/navbar/Navbar";
 import navLeft from "./childComps/navleft.vue";
 import navRight from "./childComps/navright.vue";
 import navCenter from "./childComps/navcenter.vue";
-import partition from "components/content/partition/partition"
+import partition from "components/content/partition/partition";
 import axios from "axios";
 export default {
   name: "home",
@@ -304,8 +296,8 @@ li {
   height: 100%;
 }
 #app {
-  font: 12px Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
-
+  font: 12px Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB,
+    Heiti SC, WenQuanYi Micro Hei, sans-serif;
 }
 .el-container {
   min-width: 1300px;
@@ -443,21 +435,4 @@ li {
   width: 100%;
   height: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
