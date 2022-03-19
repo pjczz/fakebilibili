@@ -1,6 +1,6 @@
 <template>
-  <div class="partition-item" >
-    <div @click="jumpPath(pItemObj.title)">
+  <div class="partition-item" @click="jumpPath(pItemObj.title)">
+    
     <div class="main-img">
       <img :src="pItemObj.pic" alt="" />
       <div class="sanlian">
@@ -18,7 +18,7 @@
       <img src="~assets/img/bilitv.png" alt="" />{{ pItemObj.owner.name }}
     </div>
   </div>
-  </div>
+  
 </template>
 
 <script>
@@ -64,6 +64,7 @@ export default {
       }
     },
     jumpPath(keyword) {
+      console.log(this.pItemObj.title)
       
       this.$router.push(`/search?keyword=${keyword}`);
     },
@@ -78,6 +79,7 @@ export default {
   height: 50%;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
 }
 .main-img {
   position: relative;

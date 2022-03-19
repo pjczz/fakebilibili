@@ -5,7 +5,7 @@
         <navbar>
           <div slot="left"><navLeft></navLeft></div>
 
-          <div slot="center"><navCenter></navCenter></div>
+          <div slot="center"><navCenter :hotSearch="hotData"></navCenter></div>
           <div slot="right"><navRight></navRight></div>
         </navbar>
         <div class="banner"><img src="~assets/img/b-banner.jpg" alt="" /></div>
@@ -369,6 +369,7 @@ li {
   border: 2px solid;
   border-radius: 25px;
   overflow: hidden;
+  cursor: pointer;
 }
 .el-carousel__container,
 .el-carousel {
@@ -380,7 +381,7 @@ li {
 }
 .swiper_title {
   color: #fff;
-  font: 16px;
+  font-size: 20px;
   transform: translateY(-100px);
 }
 .home-recommend {
@@ -399,6 +400,7 @@ li {
   flex-wrap: wrap;
   flex-direction: inherit;
   justify-content: space-between;
+  
 
   height: 100%;
   margin-left: 15px;
@@ -414,6 +416,7 @@ li {
   border: 2px solid #fff;
   border-radius: 25px;
   overflow: hidden;
+  cursor: pointer;
 }
 .recommend-item div {
   overflow: hidden;

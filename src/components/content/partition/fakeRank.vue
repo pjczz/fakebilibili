@@ -37,6 +37,7 @@ export default {
   height: 9%;
   display: flex;
   flex-direction: row;
+  cursor: pointer;
 }
 .rank-number {
   font-size: 14px;
