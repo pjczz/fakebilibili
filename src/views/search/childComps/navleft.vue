@@ -118,7 +118,7 @@
 
 <script>
 export default {
-name:'navLeft'
+
 }
 </script>
 
@@ -131,7 +131,7 @@ name:'navLeft'
   display: flex;
   padding: 0;
   margin-top: 16px;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100%;
 }
 li {
@@ -144,7 +144,6 @@ a {
   text-decoration: none;
   color: #fff;
 }
-
 .left-slot {
   height: 100%;
 }
