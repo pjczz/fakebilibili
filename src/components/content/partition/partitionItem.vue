@@ -63,12 +63,24 @@ export default {
         return min + ":" + second;
       }
     },
-    jumpPath(keyword) {
-      console.log(this.pItemObj.title)
-      
-      this.$router.push(`/search?keyword=${keyword}`);
-    },
+    
+    
+    
+    
+
+    
+    
+    
   },
+  methods:{
+    jumpPath(keyword) {
+  
+  
+  
+  
+  this.$router.push(`/search?keyword=${keyword}`);
+},
+  }
 };
 </script>
 

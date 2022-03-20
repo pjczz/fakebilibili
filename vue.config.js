@@ -1,4 +1,6 @@
 module.exports = {
+  assetsDir: "static",
+  parallel: false,
   publicPath: "./",
 
   configureWebpack: {
@@ -15,28 +17,28 @@ module.exports = {
   devServer: {
     proxy: {
       // 配置跨域，请求后端接口
-      '/api': {
-        target: 'https://www.bilibili.com',//源地址
-        changeOrigin: true,//是否允许跨域
+      "/api": {
+        target: "https://www.bilibili.com", //源地址
+        changeOrigin: true, //是否允许跨域
         // ws: false,//是否代理websockets
         pathRewrite: {
-          '^/api': ''
-        }
+          "^/api": "",
+        },
       },
-      '/hot': {
-        target: 'https://s.search.bilibili.com',
+      "/hot": {
+        target: "https://s.search.bilibili.com",
         changeOrigin: true,
         pathRewrite: {
-          '^/hot': ''
-        }
+          "^/hot": "",
+        },
       },
-      '/bbsearch': {
-        target: 'https://api.bilibili.com',
+      "/bbsearch": {
+        target: "https://api.bilibili.com",
         changeOrigin: true,
         pathRewrite: {
-          '^/bbsearch': ''
-        }
-      }
+          "^/bbsearch": "",
+        },
+      },
       /* '/defaultsearch': {
         target: 'http://api.bilibili.cn',
         changeOrigin: true,
@@ -44,6 +46,6 @@ module.exports = {
           '^/defaultsearch': ''
         }
       }, */
-    }
-  }
+    },
+  },
 };
