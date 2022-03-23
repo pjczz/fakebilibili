@@ -1,5 +1,13 @@
 <template>
   <div id="home">
+    <div id="cover" v-if="isPhone">
+      <div class="cover-content"><h2>本项目面向PC端 </h2>
+      <h2>未做移动端相关的处理</h2> 
+      <h2>不便之处，敬请体谅</h2>
+      <img src="~assets/img/music_icon_pay_success.png" alt="">
+      
+      </div>
+    </div>
     <el-container>
       <el-header>
         <navbar>
@@ -32,7 +40,12 @@
             </el-carousel>
           </div>
           <div class="home-recommend-item">
-            <div class="recommend-item" v-for="(item, i) in swiperList_r" :key="i" @click="jumpPath(item.title)">
+            <div
+              class="recommend-item"
+              v-for="(item, i) in swiperList_r"
+              :key="i"
+              @click="jumpPath(item.title)"
+            >
               <img :src="item.pic" alt="" />
               <div>{{ item.title }}</div>
             </div>
@@ -44,7 +57,9 @@
         <partition pName="单机游戏" :pList="gameList"></partition>
         <partition pName="原创音乐" :pList="musicList"></partition>
         <partition pName="美妆护肤" :pList="fashionList"></partition>
-        <div class="home-bottom"><img src="~assets/img/footer.png" alt=""></div>
+        <div class="home-bottom">
+          <img src="~assets/img/footer.png" alt="" />
+        </div>
       </el-main>
     </el-container>
   </div>
@@ -111,6 +126,7 @@ export default {
       fashionList: [],
       // 热搜数据
       hotData: [],
+      isPhone:false,
     };
   },
   created() {
@@ -122,6 +138,12 @@ export default {
     // 获取热搜数据
     this.getHotData();
   },
+  beforeMount(){
+    if (!this.isPc()) {
+  this.isPhone=true
+}
+  },
+  
   watch: {
     animationList(val) {
       this.$forceUpdate();
@@ -286,11 +308,54 @@ export default {
     jumpPath(keyword) {
       this.$router.push(`/search?keyword=${keyword}`);
     },
+    isPc() {
+      let identifier = navigator.userAgent;
+      console.log(identifier);
+      let Agents = [
+        "Android",
+        "iPhone",
+        "SymbianOS",
+        "Windows Phone",
+        "iPad",
+        "iPod",
+      ];
+      let flag = true;
+      for (let v = 0; v < Agents.length; v++) {
+        if (identifier.indexOf(Agents[v]) > 0) {
+          flag = false;
+          return flag;
+        }
+      }
+      return true;
+    },
   },
 };
 </script>
 
 <style scoped>
+#cover{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #fff;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+#cover .cover-content{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+
+}
+.cover-content img{
+  width: 100%;
+
+}
 li {
   list-style: none;
   height: 100%;
@@ -400,7 +465,6 @@ li {
   flex-wrap: wrap;
   flex-direction: inherit;
   justify-content: space-between;
-  
 
   height: 100%;
   margin-left: 15px;
