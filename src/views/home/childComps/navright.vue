@@ -18,7 +18,7 @@
         <el-popover
           trigger="hover"
           placement="bottom-start"
-          content="沃日你的歌"
+          content="消息消息消息消息"
           title="消息"
         >
           <a slot="reference">
@@ -30,7 +30,7 @@
         <el-popover
           trigger="hover"
           placement="bottom-start"
-          content="沃日你的歌"
+          content="动态动态动态动态动态"
           title="动态"
         >
           <a slot="reference">
@@ -42,7 +42,7 @@
         <el-popover
           trigger="hover"
           placement="bottom-start"
-          content="沃日你的歌"
+          content="收藏收藏收藏收藏"
           title="收藏"
         >
           <a slot="reference"> 收藏</a>
@@ -52,7 +52,7 @@
           <el-popover
     trigger="hover"
     placement="bottom-start"
-    content="沃日你的歌"
+    content="历史历史历史历史"
     title="历史"
   >
     <a slot="reference"> 历史</a>
