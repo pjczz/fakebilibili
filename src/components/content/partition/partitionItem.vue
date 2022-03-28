@@ -2,7 +2,7 @@
   <div class="partition-item" @click="jumpPath(pItemObj.title)">
     
     <div class="main-img">
-      <img :src="pItemObj.pic" alt="" />
+      <img v-lazy="pItemObj.pic" alt="" />
       <div class="sanlian">
         <i class="el-icon-video-play" style="color: #ff4d4f"></i>
         {{ getPlayNumber }}

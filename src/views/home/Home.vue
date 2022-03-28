@@ -30,10 +30,10 @@
         <!-- 轮播图加推荐栏 -->
         <div class="home-recommend">
           <div class="home-swiper">
-            <el-carousel trigger="click" :interval="5000" arrow="always">
+            <el-carousel trigger="click" :autoplay=false  height="100%">
               <el-carousel-item v-for="(item, i) in swiperList" :key="i">
-                <div @click="jumpPath(item.title)">
-                  <img class="swiper_img" :src="item.pic" />
+                <div @click="jumpPath(item.title)" id="tobe">
+                  <img class="swiper_img" v-lazy="item.pic" />
                   <div class="swiper_title">{{ item.title }}</div>
                 </div>
               </el-carousel-item>
@@ -46,7 +46,7 @@
               :key="i"
               @click="jumpPath(item.title)"
             >
-              <img :src="item.pic" alt="" />
+              <img v-lazy="item.pic" alt="" />
               <div>{{ item.title }}</div>
             </div>
           </div>
@@ -306,6 +306,7 @@ export default {
     },
     // 点击跳转路径
     jumpPath(keyword) {
+      console.log('hh')
       this.$router.push(`/search?keyword=${keyword}`);
     },
     isPc() {
@@ -351,6 +352,10 @@ export default {
   height: 100vh;
   text-align: center;
 
+}
+.home-swiper ul{
+  height:50px ;
+  
 }
 .cover-content img{
   width: 100%;
@@ -436,8 +441,13 @@ li {
   overflow: hidden;
   cursor: pointer;
 }
-.el-carousel__container,
-.el-carousel {
+.home-swiper ul{
+  height: 50px;
+}
+.el-carousel__container, .el-carousel {
+  height: 100%;
+}
+.el-carousel__container{
   height: 100%;
 }
 .home-swiper img {

@@ -1,7 +1,7 @@
 <template>
   <div class="search-video-item" @click="gogogo(mainData.arcurl)">
     <div class="search-video-img">
-      <img :src="mainData.pic" alt="" />
+      <img v-lazy="mainData.pic" alt="" />
       <div class="video-duration">{{ mainData.duration }}</div>
     </div>
     <div class="search-video-bottom">
