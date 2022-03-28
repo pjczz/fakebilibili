@@ -485,10 +485,10 @@ li {
 .recommend-item {
   position: relative;
   width: 32%;
-  height: 45%;
+  height: 48%;
   display: flex;
   border: 2px solid #fff;
-  border-radius: 25px;
+  border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
 }
