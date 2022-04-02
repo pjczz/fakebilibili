@@ -107,6 +107,9 @@ export default {
 .title {
   width: 100%;
   font-size: 14px;
+  text-overflow: ellipsis;
+  height: 40px;
+  overflow: hidden;
 }
 .sanlian {
   font-size: 12px;

@@ -83,6 +83,9 @@ export default {
 }
 .search-video-img {
   position: relative;
+  overflow: hidden;
+  height: 114.23px;
+  
 }
 .search-video-title {
   font-size: 12px;
