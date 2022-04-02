@@ -9,8 +9,7 @@
           </span>
         </div>
         <div>
-          <el-button size="small" class="elbt1"
-          @click="refreshMain"
+          <el-button size="small" class="elbt1" @click="refreshMain"
             >换一换 <i class="el-icon-refresh"></i
           ></el-button>
           <el-button size="mini" class="elbt2">更多</el-button>
@@ -41,6 +40,7 @@
 <script>
 import partitionItem from "./partitionItem.vue";
 import fakeRank from "./fakeRank.vue";
+
 export default {
   name: "partition",
   props: {
@@ -72,40 +72,52 @@ export default {
       rListObj: {
         name: "",
         playnum: 0,
+        timeout:null,
       },
     };
   },
   methods: {
     getrList() {
-      this.rList=[]
+      this.rList = [];
       for (let item of this.pList) {
-        
         this.rList.push({ name: item.title, playnum: item.stat.view });
       }
-      
+
       this.rList = this.rList.sort(function (a, b) {
         return b.playnum - a.playnum;
       });
-     
     },
-  
-  ranking(obj1, obj2) {
-    var val1 = obj1.playnum;
-    var val2 = obj2.playnum;
-    if (val1 < val2) {
-      return 1;
-    }
-    if (val1 == val2) {
-      return 0;
-    }
-    if (val1 > val2) {
-      return -1;
-    }
-  },
-  refreshMain(){
-    
-    this.$bus.$emit('changeList',this.pName)
-  },
+
+    ranking(obj1, obj2) {
+      var val1 = obj1.playnum;
+      var val2 = obj2.playnum;
+      if (val1 < val2) {
+        return 1;
+      }
+      if (val1 == val2) {
+        return 0;
+      }
+      if (val1 > val2) {
+        return -1;
+      }
+    },
+    refreshMain() {
+      this.change(this.appleRefresh);
+      
+    },
+    appleRefresh() {
+      this.$bus.$emit("changeList", this.pName);
+      console.log(111);
+    },
+    change(fun) {
+      let that=this
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
+      this.timeout = setTimeout(() => {
+       fun.apply(that)
+      }, 1000);
+    },
   },
 };
 </script>
