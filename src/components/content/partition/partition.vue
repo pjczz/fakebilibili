@@ -77,7 +77,9 @@ export default {
   },
   methods: {
     getrList() {
+      this.rList=[]
       for (let item of this.pList) {
+        
         this.rList.push({ name: item.title, playnum: item.stat.view });
       }
       
