@@ -40,7 +40,7 @@
 <script>
 import partitionItem from "./partitionItem.vue";
 import fakeRank from "./fakeRank.vue";
-
+import { refreshThrottle } from "common/throttle.js";
 export default {
   name: "partition",
   props: {
@@ -72,7 +72,7 @@ export default {
       rListObj: {
         name: "",
         playnum: 0,
-        timeout:null,
+        timeout: null,
       },
     };
   },
@@ -101,21 +101,24 @@ export default {
         return -1;
       }
     },
-    refreshMain() {
-      this.change(this.appleRefresh);
-      
-    },
-    appleRefresh() {
+
+    applyRefresh() {
       this.$bus.$emit("changeList", this.pName);
       console.log(111);
     },
+    refreshMain() {
+      //节流函数，抽离到throttle.js中 该方法返回一个函数，所以需要再调用一次
+     let a= refreshThrottle(this.applyRefresh);
+     a()
+    },
     change(fun) {
-      let that=this
+      //节流函数，这里没有使用，只能在该组件使用，没有组件化所以不使用
+      let that = this;
       if (this.timeout) {
         clearTimeout(this.timeout);
       }
       this.timeout = setTimeout(() => {
-       fun.apply(that)
+        fun.apply(that);
       }, 1000);
     },
   },
