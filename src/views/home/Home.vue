@@ -306,7 +306,7 @@ export default {
     },
     // 点击跳转路径
     jumpPath(keyword) {
-      console.log('hh')
+      
       this.$router.push(`/search?keyword=${keyword}`);
     },
     isPc() {

@@ -625,7 +625,8 @@ a {
 .search-video {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+ 
+  
   align-items: center;
   flex-direction: row;
   width: 980px;

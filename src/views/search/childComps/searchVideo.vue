@@ -68,9 +68,10 @@ export default {
 .search-video-item {
   display: flex;
   width: 18%;
+  margin-left: 100px;
   height: auto;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 20px 7px;
   border: 2px solid #E5E9EF;
   cursor: pointer;
 }
