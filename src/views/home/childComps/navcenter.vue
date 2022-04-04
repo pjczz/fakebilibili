@@ -11,7 +11,7 @@
           @click="jumpPath(item.keyword)"
         >
          <div style="font-size:14px;margin:10px 20px;">{{ index+1 }}</div >  <div style="font-size:14px;margin:10px 20px;">{{ item.keyword }}</div>  
-          <img :src="item.icon" alt="" style="height: 14px;margin:10px 0;"  />
+          <img v-lazy="item.icon" alt="" style="height: 14px;margin:10px 0;"  />
         </div>
       </div>
     </div>

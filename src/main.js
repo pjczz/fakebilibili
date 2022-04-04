@@ -6,7 +6,10 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios'
 import _ from 'lodash'
-
+import VueLazyload from 'vue-lazyload'
+import "./assets/css/normalize.css"
+import "./assets/css/base.css"
+Vue.use(VueLazyload)
 
 Vue.use(ElementUI);
 

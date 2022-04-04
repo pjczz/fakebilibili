@@ -122,7 +122,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .bili-font {
   font-weight: 300;
   font-size: 20px;

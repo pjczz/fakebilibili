@@ -15,7 +15,11 @@
         <el-popover
           trigger="hover"
           placement="bottom-start"
+
+
+
           content="消息消息消息"
+
           title="消息"
         >
           <a slot="reference">
@@ -27,7 +31,11 @@
         <el-popover
           trigger="hover"
           placement="bottom-start"
-          content="动态动态动态动态"
+
+
+
+          content="动态动态动态动态动态"
+
           title="动态"
         >
           <a slot="reference">
@@ -46,14 +54,25 @@
         </el-popover>
       </li>
       <li>
-        <el-popover
-          trigger="hover"
-          placement="bottom-start"
-          content="历史历史历史历史"
-          title="历史"
-        >
-          <a slot="reference"> 历史</a>
-        </el-popover>
+
+
+
+
+
+
+
+
+
+
+          <el-popover
+    trigger="hover"
+    placement="bottom-start"
+    content="历史历史历史历史"
+    title="历史"
+  >
+    <a slot="reference"> 历史</a>
+  </el-popover>
+
       </li>
       <li>创作中心</li>
       <li><el-button type="danger" size="mini">投稿</el-button></li>
@@ -65,7 +84,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .right-slot {
   width: 100%;
   height: 20px;

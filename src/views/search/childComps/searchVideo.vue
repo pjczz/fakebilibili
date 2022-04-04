@@ -1,7 +1,7 @@
 <template>
   <div class="search-video-item" @click="gogogo(mainData.arcurl)">
     <div class="search-video-img">
-      <img :src="mainData.pic" alt="" />
+      <img v-lazy="mainData.pic" alt="" />
       <div class="video-duration">{{ mainData.duration }}</div>
     </div>
     <div class="search-video-bottom">
@@ -68,9 +68,10 @@ export default {
 .search-video-item {
   display: flex;
   width: 18%;
+  margin-left: 100px;
   height: auto;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 20px 7px;
   border: 2px solid #E5E9EF;
   cursor: pointer;
 }
@@ -83,6 +84,9 @@ export default {
 }
 .search-video-img {
   position: relative;
+  overflow: hidden;
+  height: 114.23px;
+  
 }
 .search-video-title {
   font-size: 12px;
