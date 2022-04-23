@@ -9,7 +9,10 @@ import _ from 'lodash'
 import VueLazyload from 'vue-lazyload'
 import "./assets/css/normalize.css"
 import "./assets/css/base.css"
-Vue.use(VueLazyload)
+Vue.use(VueLazyload, {
+  // 占位图: 还没加载完，用这个图片代替
+  loading: require('./assets/img/bilibili.png')
+})
 
 Vue.use(ElementUI);
 

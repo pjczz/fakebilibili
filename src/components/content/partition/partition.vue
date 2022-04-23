@@ -125,14 +125,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .home-partition {
   position: relative;
   width: 84vw;
   margin: 5vh 8vw;
   min-width: 1170px;
   display: flex;
-
+  justify-content: space-between;
   align-items: center;
   height: 50vh;
   padding: 0;
@@ -140,9 +140,9 @@ export default {
 }
 .partition-recommend {
   display: flex;
-  width: 100%;
+  width: 78%;
   flex-direction: column;
-
+ 
   height: 100%;
 }
 .partition-recommend-top {
@@ -174,8 +174,10 @@ export default {
   justify-content: space-around;
 }
 .partition-rank {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  width: 25%;
+  width: 20%;
 }
 .shit {
   font-size: 18px;
